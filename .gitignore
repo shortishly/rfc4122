@@ -1,0 +1,16 @@
+*~
+*.plt
+erl_crash.dump
+*.beam
+deps/*
+.eunit/*
+ebin/*.app
+.DS_Store
+.vagrant
+.#*#
+#*#
+.erlang.mk.packages*
+_rel
+relx
+ipcam-*.tar.gz
+logs/*
