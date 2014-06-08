@@ -27,7 +27,7 @@ v4() ->
 
 -spec v5(rfc4122:uuid(), iodata()) -> rfc4122:uuid().
 v5(Space, Name) ->
-    <<TimeLow:32, TimeMid:16, _:4, TimeHi:12, _:2, ClockHi:6, ClockLow:8, Node:48, _/binary>> = crypto:hash(sha, [iolist(Space), Name]),
+    <<TimeLow:32, TimeMid:16, _:4, TimeHi:12, _:2, ClockHi:6, ClockLow:8, Node:48, _/binary>> = crypto:sha([iolist(Space), Name]),
     uuid(TimeLow, TimeMid, 5, TimeHi, ClockHi, ClockLow, Node).
 
 -spec external(rfc4122:uuid()) -> binary().
