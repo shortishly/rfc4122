@@ -15,7 +15,7 @@
 
 {application, rfc4122,
  [{description,"RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace"},
-  {vsn,"0.0.2"},
+  {vsn,"0.0.3"},
   {modules,[]},
   {registered,[]},
   {applications,[kernel,stdlib,crypto]},
