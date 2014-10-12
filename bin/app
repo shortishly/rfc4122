@@ -1,4 +1,5 @@
-%%-*- mode: erlang -*-
+#!/usr/bin/env escript
+%% -*- erlang -*-
 %% Copyright (c) 2014 Peter Morgan <peter.james.morgan@gmail.com>
 %%
 %% Licensed under the Apache License, Version 2.0 (the "License");
@@ -12,12 +13,16 @@
 %% WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 %% See the License for the specific language governing permissions and
 %% limitations under the License.
+%%
 
-{application, rfc4122,
- [{description,"RFC 4122 - A Universally Unique IDentifier (UUID) URN Namespace"},
-  {vsn,"0.0.3"},
-  {modules,[]},
-  {registered,[]},
-  {applications,[kernel,stdlib,crypto]},
-  {env,[]}
-]}.
+main([]) ->
+    {application, Name, _} = application(),
+    io:format("~w~n", [Name]).
+
+app_src() ->
+    [Filename] = filelib:wildcard(filename:join([filename:dirname(escript:script_name()), "../src/*.app.src"])),
+    Filename.
+
+application() ->
+    {ok, [{application, _, _} = Application]} = file:consult(app_src()),
+    Application.
