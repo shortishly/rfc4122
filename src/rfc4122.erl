@@ -14,17 +14,14 @@
 
 -module(rfc4122).
 
--export([
-	 v4/0,
-	 v5/2,
-	 iolist/1,
-	 external/1,
-	 version/1
-	]).
 
--export_type([
-	      uuid/0
-	     ]).
+-export([external/1]).
+-export([iolist/1]).
+-export([v4/0]).
+-export([v5/2]).
+-export([version/1]).
+-export_type([uuid/0]).
+
 
 -opaque uuid() :: <<_:128>>.
 
@@ -57,4 +54,3 @@ iolist(<<TimeLow:32, TimeMid:16, TimeHi:16, Clock:16, Node:48>>) ->
 -spec version(uuid()) -> pos_integer().
 version(<<_TimeLow:32, _TimeMid:16, Version:4, _TimeHi:12, 2:2, _ClockHi:6, _ClockLow:8, _Node:48>>) ->
     Version.
-
